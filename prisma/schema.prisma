@@ -10,7 +10,7 @@ datasource db {
 model UserTest {
   id       String  @id @default(uuid())
   name     String
-  phone    String?
+  cpf     String  @unique
   email    String  @unique
   password String
 }

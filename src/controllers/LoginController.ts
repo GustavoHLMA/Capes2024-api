@@ -10,9 +10,9 @@ import {
 class LoginController {
   async login(req: Request, res: Response, next: NextFunction) {
     try {
-      const { email, password } = req.body;
+      const { cpf, password } = req.body;
 
-      const userTest = await UserTestRepository.findByEmail(email);
+      const userTest = await UserTestRepository.findByCpf(cpf);
 
       if (!userTest) {
         return res.status(400).json({

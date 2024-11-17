@@ -17,6 +17,11 @@ class UserTestRepository {
     return userTest;
   }
 
+  async findByCpf(cpf: string): Promise<UserTest | null> {
+    const userTest = await prisma.userTest.findUnique({ where: { cpf } });
+    return userTest;
+  }
+
   async update(id: string, data: Prisma.UserTestUpdateInput): Promise<UserTest> {
     const userTest = await prisma.userTest.update({ where: { id }, data });
     return userTest;

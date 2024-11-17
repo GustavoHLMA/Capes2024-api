@@ -16,6 +16,12 @@ class UserTestController {
         return res.status(400).json({ message: 'This email is already registred' });
       }
 
+      const existsUserTestWithCpf = await UserTestRepository.findByCpf(userTestData.cpf);
+
+      if (existsUserTestWithCpf) {
+        return res.status(400).json({ message: 'This CPF is already registred' });
+      }
+
       const userTestDataWithHashedPassword = {
         ...userTestData,
         password: await hash(userTestData.password, 6),

@@ -7,12 +7,13 @@ export const UserTest = z.object({
       required_error: 'O nome é obrigatório',
     })
     .regex(/^[a-zA-Z\s]+$/, { message: 'O nome deve conter apenas letras' }),
-  phone: z
-    .string({ invalid_type_error: 'O número de telefone deve ser uma string' })
-    .regex(/^\+?[0-9]+$/, {
-      message: 'O número de telefone deve conter apenas números',
+  cpf: z
+    .string({
+      invalid_type_error: 'O CPF deve ser uma string',
+      required_error: 'O CPF é obrigatório',
     })
-    .optional(),
+    .length(11, { message: 'O CPF deve ter 11 caracteres' })
+    .regex(/^\d+$/, { message: 'O CPF deve conter apenas números' }),
   email: z
     .string({
       invalid_type_error: 'O email deve ser uma string',

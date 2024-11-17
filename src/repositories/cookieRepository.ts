@@ -4,7 +4,7 @@ class CookieRepository {
   setCookie(res: Response, tokenName: string, token: string) {
     res.cookie(tokenName, token, {
       httpOnly: true,
-      path: '/sessions',
+      path: '/auth',
       secure: true,
     });
   }
@@ -12,7 +12,7 @@ class CookieRepository {
   clearCookies(res: Response, tokenName: string) {
     res.cookie(tokenName, '', {
       httpOnly: true,
-      path: '/sessions',
+      path: '/auth',
       secure: true,
       maxAge: 0,
     });
